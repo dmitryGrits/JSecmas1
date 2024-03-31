@@ -2,7 +2,8 @@
 // с помощью Math.min и spread оператора, найти минимальное число 
 // в массиве, решение задание должно состоять из одной строки
 
-
+// const arr = [1, 5, 7, 9];
+// console.log(Math.min(...arr)); 
 
 // 2) Напишите функцию createCounter, которая создает счетчик 
 // и возвращает объект с двумя методами: increment и decrement. 
@@ -11,7 +12,24 @@
 // Значение счетчика должно быть доступно только через 
 // методы объекта, а не напрямую.
 
+function createCounter () {
+    return {
+        value: 0,
+        increment() {
+            this.value += 1;
+            return this.value; 
+        },
+        decrement() {
+            this.value -= 1;
+            return this.value;
+        }
+    }
+}
 
+const counter = createCounter();
+console.log(counter.increment());
+console.log(counter.increment());
+console.log(counter.decrement());
 
 // 3) Напишите рекурсивную функцию findElementByClass, 
 // которая принимает корневой элемент дерева DOM и название класса 

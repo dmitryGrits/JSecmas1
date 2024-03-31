@@ -12,30 +12,39 @@
 // Значение счетчика должно быть доступно только через 
 // методы объекта, а не напрямую.
 
-function createCounter () {
-    return {
-        value: 0,
-        increment() {
-            this.value += 1;
-            return this.value; 
-        },
-        decrement() {
-            this.value -= 1;
-            return this.value;
-        }
-    }
-}
+// function createCounter () {
+//     return {
+//         value: 0,
+//         increment() {
+//             this.value += 1;
+//             return this.value; 
+//         },
+//         decrement() {
+//             this.value -= 1;
+//             return this.value;
+//         }
+//     }
+// }
 
-const counter = createCounter();
-console.log(counter.increment());
-console.log(counter.increment());
-console.log(counter.decrement());
+// const counter = createCounter();
+// console.log(counter.increment());
+// console.log(counter.increment());
+// console.log(counter.decrement());
 
 // 3) Напишите рекурсивную функцию findElementByClass, 
 // которая принимает корневой элемент дерева DOM и название класса 
 // в качестве аргументов и возвращает первый найденный элемент 
 // с указанным классом в этом дереве.
 // Пример
-// const rootElement = document.getElementById('root');
-// const targetElement = findElementByClass(rootElement, 'my-class');
-// console.log(targetElement);
+const rootElement = document.getElementById('root');
+// console.log(rootElement);
+
+
+function findElementByClass (rootEl, classEl) {
+    if (classEl === rootEl.className) return rootEl;
+    else return findElementByClass(rootEl.firstElementChild, classEl);
+
+};
+
+const targetElement = findElementByClass(rootElement, 'my-class');
+console.log(targetElement);
